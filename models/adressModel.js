@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 const AddressModel = {
   async createAddress(userId, data, tx = prisma) {
     return tx.addressDetail.create({
-      data: { ...data, user: { connect: { id: userId } } },
+      data: { ...data, User: { connect: { id: userId } } },
     });
   },
 
