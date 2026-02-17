@@ -44,3 +44,6 @@ package-lock.json
 
 # Tester Application
 tester/
+
+# Sensitive setup guides with credentials
+RAILWAY_ENV_SETUP.md
