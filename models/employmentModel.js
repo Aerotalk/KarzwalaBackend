@@ -16,7 +16,7 @@ const EmploymentModel = {
         companyAddress: data.companyAddress,
         monthlyIncome: data.monthlyIncome,
         stability: data.stability,
-        user: {
+        User: {
           connect: { id: userId },
         },
       },
