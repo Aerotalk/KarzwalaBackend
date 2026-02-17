@@ -55,7 +55,7 @@ model BusinessDetail {
   state        String?
   pincode      String?
   createdAt    DateTime @default(now())
-  updatedAt    DateTime
+  updatedAt    DateTime @updatedAt
   User         User     @relation(fields: [userId], references: [id])
 }
 
@@ -67,7 +67,7 @@ model EmploymentDetail {
   monthlyIncome   Float?
   createdAt       DateTime          @default(now())
   employerName    String?
-  updatedAt       DateTime
+  updatedAt       DateTime          @updatedAt
   employmentType  EmploymentType
   User            User              @relation(fields: [userId], references: [id])
   LoanApplication LoanApplication[]
@@ -81,7 +81,7 @@ model Loan {
   status        LoanStatus @default(PENDING)
   userId        Int
   createdAt     DateTime   @default(now())
-  updatedAt     DateTime
+  updatedAt     DateTime   @updatedAt
   loanAmount    Float
   purposeOfLoan String?
   User          User       @relation(fields: [userId], references: [id])
@@ -96,7 +96,7 @@ model LoanApplication {
   otpVerified         Boolean           @default(false)
   status              LoanStatus        @default(PENDING)
   createdAt           DateTime          @default(now())
-  updatedAt           DateTime
+  updatedAt           DateTime          @updatedAt
   attributedPartnerId Int?
   attributionSource   String?
   EmploymentDetail    EmploymentDetail? @relation(fields: [employmentDetailId], references: [id])
@@ -149,7 +149,7 @@ model Partner {
   pincode        String?
   secretKey      String?
   createdAt      DateTime          @default(now())
-  updatedAt      DateTime
+  updatedAt      DateTime          @updatedAt
   firmName       String?
   AttributionLog AttributionLog[]
   User           User[]
@@ -162,7 +162,7 @@ model PartnerStatus {
   remarks    String?
   approvedBy Int?
   secretKey  String?
-  updatedAt  DateTime
+  updatedAt  DateTime @updatedAt
   User       User     @relation(fields: [userId], references: [id])
 }
 
@@ -175,7 +175,7 @@ model User {
   dob                 DateTime?
   gender              Gender?
   createdAt           DateTime             @default(now())
-  updatedAt           DateTime
+  updatedAt           DateTime             @updatedAt
   role                UserRole             @default(CUSTOMER)
   verificationStatus  VerificationStatus   @default(PENDING)
   phoneVerified       Boolean              @default(false)
@@ -228,7 +228,7 @@ model UserDocumentStatus {
   status    String   @default("PENDING_UPLOAD")
   latitude  Float?
   longitude Float?
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
   User      User     @relation(fields: [userId], references: [id])
 }
 
