@@ -29,7 +29,7 @@ const LoanModel = {
       termMonths: data.termMonths ? Number(data.termMonths) : null,
       startDate: data.startDate ? new Date(data.startDate) : new Date(),
       status: data.status || 'PENDING',
-      User: { connect: { id: userId } },
+      user: { connect: { id: userId } },
     };
 
     try {

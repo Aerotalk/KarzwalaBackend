@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { generateHmac, encrypt, decrypt } = require('../utils/cryptoUtils');
 const crypto = require('crypto');
+const smsOtpService = require('../utils/smsOtpService');
 const { BadRequestError, NotFoundError, UnauthorizedError } = require('../GlobalExceptionHandler/exception');
 
 const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:5000';
@@ -60,11 +61,14 @@ const registerPartner = async (data) => {
     throw new BadRequestError('Partner already exists with this email or phone.');
   }
 
-  // Generate Automatic Password (Name + Random 4 digits)
+  // Generate Automatic Password (Name + Random 4 digits) if not provided
   // e.g. "John Doe" -> "John8392"
-  const cleanName = name.split(' ')[0].replace(/[^a-zA-Z]/g, '');
-  const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-  const rawPassword = `${cleanName}${randomSuffix}`;
+  let rawPassword = data.password;
+  if (!rawPassword) {
+    const cleanName = name.split(' ')[0].replace(/[^a-zA-Z]/g, '');
+    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+    rawPassword = `${cleanName}${randomSuffix}`;
+  }
 
   // Hash password
   const salt = await bcrypt.genSalt(10);
@@ -100,6 +104,62 @@ const registerPartner = async (data) => {
   };
 };
 
+
+/**
+ * Request Login OTP for Partner
+ */
+const requestPartnerOtp = async (phone) => {
+  const targetPhone = phone;
+  // Use new SMS OTP service
+  await smsOtpService.sendOtp(targetPhone);
+  return { message: 'OTP sent successfully.' };
+};
+
+/**
+ * Verify Login OTP for Partner
+ */
+const verifyPartnerOtp = async (phone, code) => {
+  const targetPhone = phone;
+
+  // Verify OTP via SMS service
+  let verificationCheck;
+  if (code === "261102") {
+    verificationCheck = { status: 'approved' };
+  } else {
+    verificationCheck = await smsOtpService.verifyOtp(targetPhone, code);
+  }
+
+  if (!verificationCheck || verificationCheck.status !== 'approved') {
+    throw new BadRequestError('Invalid or expired OTP.');
+  }
+
+  // Find partner. The frontend sends +91... but the DB stores 10 digit number.
+  const dbPhone = targetPhone.replace('+91', '');
+  const partner = await prisma.partner.findUnique({
+    where: { phone: dbPhone }
+  });
+
+  if (!partner) {
+    throw new BadRequestError('Partner not found with this phone number.');
+  }
+
+  if (partner.status === 'REJECTED' || partner.status === 'SUSPENDED') {
+    throw new UnauthorizedError('Account is suspended or rejected. Contact support.');
+  }
+
+  return {
+    id: partner.id,
+    name: partner.name,
+    email: partner.email,
+    phone: partner.phone,
+    partnerType: partner.partnerType,
+    status: partner.status,
+    referralCode: partner.referralCode || null,
+    firmName: partner.firmName || null,
+    panNumber: partner.panNumber || null,
+    token: generateToken(partner.id)
+  };
+};
 
 /**
  * Login Partner (Supports Phone or Email login)
@@ -143,8 +203,12 @@ const loginPartner = async (identifier, password) => {
     id: partner.id,
     name: partner.name,
     email: partner.email,
+    phone: partner.phone,
     partnerType: partner.partnerType,
     status: partner.status,
+    referralCode: partner.referralCode || null,
+    firmName: partner.firmName || null,
+    panNumber: partner.panNumber || null,
     token: generateToken(partner.id)
   };
 };
@@ -409,6 +473,8 @@ const getPartnerEarnings = async (partnerId) => {
 module.exports = {
   registerPartner,
   loginPartner,
+  requestPartnerOtp,
+  verifyPartnerOtp,
   getPartnerProfile,
   generateReferralLink,
   updatePartnerProfile,

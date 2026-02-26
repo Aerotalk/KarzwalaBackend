@@ -8,164 +8,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model AadhaarVerification {
-  id            Int       @id @default(autoincrement())
-  aadhaarNumber String    @unique
-  verified      Boolean   @default(false)
-  verifiedAt    DateTime?
-  userId        Int       @unique
-  User          User      @relation(fields: [userId], references: [id])
-}
-
-model AddressDetail {
-  id                  Int          @id @default(autoincrement())
-  city                String?
-  state               String?
-  postalCode          String?
-  userId              Int          @unique
-  currentAddress      String?
-  currentAddressProof String?
-  currentAddressType  AddressType?
-  permanentAddress    String?
-  User                User         @relation(fields: [userId], references: [id])
-}
-
-model AttributionLog {
-  id        Int      @id @default(autoincrement())
-  userId    Int?
-  partnerId Int
-  action    String
-  metadata  String?
-  ipAddress String?
-  userAgent String?
-  createdAt DateTime @default(now())
-  Partner   Partner  @relation(fields: [partnerId], references: [id])
-  User      User?    @relation(fields: [userId], references: [id])
-}
-
-model BusinessDetail {
-  id           Int      @id @default(autoincrement())
-  userId       Int      @unique
-  firmName     String
-  gstNumber    String?
-  tradeLicense String?
-  companyPan   String?
-  address      String?
-  city         String?
-  state        String?
-  pincode      String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  User         User     @relation(fields: [userId], references: [id])
-}
-
-model EmploymentDetail {
-  id              Int               @id @default(autoincrement())
-  stability       JobStability?
-  userId          Int               @unique
-  companyAddress  String?
-  monthlyIncome   Float?
-  createdAt       DateTime          @default(now())
-  employerName    String?
-  updatedAt       DateTime          @updatedAt
-  employmentType  EmploymentType
-  User            User              @relation(fields: [userId], references: [id])
-  LoanApplication LoanApplication[]
-}
-
-model Loan {
-  id            Int        @id @default(autoincrement())
-  interestRate  Float?
-  termMonths    Int?
-  startDate     DateTime?
-  status        LoanStatus @default(PENDING)
-  userId        Int
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @updatedAt
-  loanAmount    Float
-  purposeOfLoan String?
-  User          User       @relation(fields: [userId], references: [id])
-}
-
-model LoanApplication {
-  id                  Int               @id @default(autoincrement())
-  userId              Int
-  employmentDetailId  Int?
-  loanType            LoanType
-  loanAmount          Float?
-  otpVerified         Boolean           @default(false)
-  status              LoanStatus        @default(PENDING)
-  createdAt           DateTime          @default(now())
-  updatedAt           DateTime          @updatedAt
-  attributedPartnerId Int?
-  attributionSource   String?
-  EmploymentDetail    EmploymentDetail? @relation(fields: [employmentDetailId], references: [id])
-  User                User              @relation(fields: [userId], references: [id])
-}
-
-model Otp {
-  id        Int      @id @default(autoincrement())
-  phone     String
-  code      String
-  expiresAt DateTime
-  verified  Boolean  @default(false)
-  createdAt DateTime @default(now())
-
-  @@index([phone, expiresAt])
-}
-
-model OtpVerification {
-  id        Int      @id @default(autoincrement())
-  otpCode   String
-  expiresAt DateTime
-  verified  Boolean  @default(false)
-  userId    Int
-  createdAt DateTime @default(now())
-  User      User     @relation(fields: [userId], references: [id])
-}
-
-model PanVerification {
-  id         Int       @id @default(autoincrement())
-  panNumber  String    @unique
-  verified   Boolean   @default(false)
-  verifiedAt DateTime?
-  userId     Int       @unique
-  User       User      @relation(fields: [userId], references: [id])
-}
-
-model Partner {
-  id             Int               @id @default(autoincrement())
-  name           String
-  email          String?           @unique
-  phone          String            @unique
-  password       String?
-  partnerType    PartnerType
-  status         PartnerStatusType @default(PENDING)
-  gstNumber      String?
-  panNumber      String?
-  address        String?
-  city           String?
-  state          String?
-  pincode        String?
-  secretKey      String?
-  createdAt      DateTime          @default(now())
-  updatedAt      DateTime          @updatedAt
-  firmName       String?
-  AttributionLog AttributionLog[]
-  User           User[]
-}
-
-model PartnerStatus {
-  id         Int      @id @default(autoincrement())
-  userId     Int      @unique
-  status     String   @default("PENDING")
-  remarks    String?
-  approvedBy Int?
-  secretKey  String?
-  updatedAt  DateTime @updatedAt
-  User       User     @relation(fields: [userId], references: [id])
-}
-
 model User {
   id                  Int                  @id @default(autoincrement())
   name                String?
@@ -185,20 +27,180 @@ model User {
   attributionDate     DateTime?
   attributionType     AttributionType?
   profileType         ProfileType?
-  AadhaarVerification AadhaarVerification?
-  AddressDetail       AddressDetail?
-  AttributionLog      AttributionLog[]
-  BusinessDetail      BusinessDetail?
-  EmploymentDetail    EmploymentDetail?
-  Loan                Loan[]
-  LoanApplication     LoanApplication[]
-  OtpVerification     OtpVerification[]
-  PanVerification     PanVerification?
-  PartnerStatus       PartnerStatus?
-  Partner             Partner?             @relation(fields: [attributedPartnerId], references: [id])
-  UserDocument        UserDocument[]
-  UserDocumentStatus  UserDocumentStatus?
-  UserLocation        UserLocation[]
+  aadhaarVerification AadhaarVerification?
+  address             AddressDetail?
+  attributionLogs     AttributionLog[]
+  business            BusinessDetail?
+  employment          EmploymentDetail?
+  loans               Loan[]
+  loanApplications    LoanApplication[]
+  otps                OtpVerification[]
+  panVerification     PanVerification?
+  partnerStatus       PartnerStatus?
+  attributedPartner   Partner?             @relation(fields: [attributedPartnerId], references: [id])
+  documents           UserDocument[]
+  status              UserDocumentStatus?
+  locations           UserLocation[]
+  losIntegrationJobs  LosIntegrationJob[]
+}
+
+model BusinessDetail {
+  id           Int      @id @default(autoincrement())
+  userId       Int      @unique
+  firmName     String
+  gstNumber    String?
+  tradeLicense String?
+  companyPan   String?
+  address      String?
+  city         String?
+  state        String?
+  pincode      String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model PartnerStatus {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @unique
+  status     String   @default("PENDING")
+  remarks    String?
+  approvedBy Int?
+  secretKey  String?
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [id])
+}
+
+model Partner {
+  id              Int               @id @default(autoincrement())
+  name            String
+  email           String?           @unique
+  phone           String            @unique
+  password        String?
+  partnerType     PartnerType
+  status          PartnerStatusType @default(PENDING)
+  gstNumber       String?
+  panNumber       String?
+  address         String?
+  city            String?
+  state           String?
+  pincode         String?
+  secretKey       String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  firmName        String?
+  attributionLogs AttributionLog[]
+  users           User[]
+}
+
+model AttributionLog {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  partnerId Int
+  action    String
+  metadata  String?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  partner   Partner  @relation(fields: [partnerId], references: [id])
+  user      User?    @relation(fields: [userId], references: [id])
+}
+
+model AadhaarVerification {
+  id            Int       @id @default(autoincrement())
+  aadhaarNumber String    @unique
+  verified      Boolean   @default(false)
+  verifiedAt    DateTime?
+  userId        Int       @unique
+  user          User      @relation(fields: [userId], references: [id])
+}
+
+model PanVerification {
+  id         Int       @id @default(autoincrement())
+  panNumber  String    @unique
+  verified   Boolean   @default(false)
+  verifiedAt DateTime?
+  userId     Int       @unique
+  user       User      @relation(fields: [userId], references: [id])
+}
+
+model EmploymentDetail {
+  id               Int               @id @default(autoincrement())
+  stability        JobStability?
+  userId           Int               @unique
+  companyAddress   String?
+  monthlyIncome    Float?
+  createdAt        DateTime          @default(now())
+  employerName     String?
+  updatedAt        DateTime          @updatedAt
+  employmentType   EmploymentType
+  user             User              @relation(fields: [userId], references: [id])
+  loanApplications LoanApplication[] @relation("EmploymentLoanApplications")
+}
+
+model AddressDetail {
+  id                  Int          @id @default(autoincrement())
+  city                String?
+  state               String?
+  postalCode          String?
+  userId              Int          @unique
+  currentAddress      String?
+  currentAddressProof String?
+  currentAddressType  AddressType?
+  permanentAddress    String?
+  user                User         @relation(fields: [userId], references: [id])
+}
+
+model OtpVerification {
+  id        Int      @id @default(autoincrement())
+  otpCode   String
+  expiresAt DateTime
+  verified  Boolean  @default(false)
+  userId    Int
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Otp {
+  id        Int      @id @default(autoincrement())
+  phone     String
+  code      String
+  expiresAt DateTime
+  verified  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([phone, expiresAt])
+}
+
+model Loan {
+  id            Int        @id @default(autoincrement())
+  interestRate  Float?
+  termMonths    Int?
+  startDate     DateTime?
+  status        LoanStatus @default(PENDING)
+  userId        Int
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  loanAmount    Float
+  purposeOfLoan String?
+  user          User       @relation(fields: [userId], references: [id])
+}
+
+model LoanApplication {
+  id                  Int                @id @default(autoincrement())
+  userId              Int
+  employmentDetailId  Int?
+  loanType            LoanType
+  loanAmount          Float?
+  otpVerified         Boolean            @default(false)
+  status              LoanStatus         @default(PENDING)
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+  attributedPartnerId Int?
+  attributionSource   String?
+  employmentDetail    EmploymentDetail?  @relation("EmploymentLoanApplications", fields: [employmentDetailId], references: [id])
+  user                User               @relation(fields: [userId], references: [id])
+  losIntegrationJob   LosIntegrationJob?
 }
 
 model UserDocument {
@@ -217,19 +219,9 @@ model UserDocument {
   status     DocumentUploadStatus @default(SUBMITTED)
   verifiedAt DateTime?
   verifiedBy Int?
-  User       User                 @relation(fields: [userId], references: [id])
+  user       User                 @relation(fields: [userId], references: [id])
 
   @@index([userId, docType])
-}
-
-model UserDocumentStatus {
-  id        Int      @id @default(autoincrement())
-  userId    Int      @unique
-  status    String   @default("PENDING_UPLOAD")
-  latitude  Float?
-  longitude Float?
-  updatedAt DateTime @updatedAt
-  User      User     @relation(fields: [userId], references: [id])
 }
 
 model UserLocation {
@@ -245,47 +237,52 @@ model UserLocation {
   postalCode String?
   placeName  String?
   capturedAt DateTime @default(now())
-  User       User     @relation(fields: [userId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
 }
 
-enum AddressType {
-  OWNER_SELF_OR_FAMILY
-  RENTED
+model UserDocumentStatus {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @unique
+  status    String   @default("PENDING_UPLOAD")
+  latitude  Float?
+  longitude Float?
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
 }
 
-enum AttributionType {
-  ONLINE_LINK
-  ASSISTED
-  ORGANIC
-  ADMIN_OVERRIDE
-}
-
-enum DocumentType {
-  AADHAAR
-  PAN
-  PAY_SLIP
-  BANK_STATEMENT
-  PHOTO
-  SIGNATURE
-  GST_CERTIFICATE
-  TRADE_LICENSE
-  COMPANY_PAN
-  ADDRESS_PROOF
-}
-
-enum DocumentUploadStatus {
-  PENDING_UPLOAD
-  SUBMITTED
+enum VerificationStatus {
+  PENDING
   VERIFIED
   REJECTED
 }
 
-enum EmploymentType {
-  SALARIED
-  SELF_EMPLOYED
-  STUDENT
-  UNEMPLOYED
-  OTHER
+enum UserRole {
+  CUSTOMER
+  DSA
+  AFFILIATE
+  ADMIN
+  SUPER_ADMIN
+  BC
+  Employees
+}
+
+enum PartnerType {
+  DSA
+  BC
+  AFFILIATE
+  API_PARTNER
+}
+
+enum PartnerStatusType {
+  PENDING
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+
+enum ProfileType {
+  INDIVIDUAL
+  FIRM
 }
 
 enum Gender {
@@ -302,11 +299,24 @@ enum JobStability {
   VERY_STABLE
 }
 
+enum AddressType {
+  OWNER_SELF_OR_FAMILY
+  RENTED
+}
+
 enum LoanStatus {
   PENDING
   APPROVED
   REJECTED
   CLOSED
+}
+
+enum EmploymentType {
+  SALARIED
+  SELF_EMPLOYED
+  STUDENT
+  UNEMPLOYED
+  OTHER
 }
 
 enum LoanType {
@@ -320,37 +330,47 @@ enum LoanType {
   OTHER
 }
 
-enum PartnerStatusType {
-  PENDING
-  APPROVED
-  REJECTED
-  SUSPENDED
+enum DocumentType {
+  AADHAAR
+  PAN
+  PAY_SLIP
+  BANK_STATEMENT
+  PHOTO
+  SIGNATURE
+  GST_CERTIFICATE
+  TRADE_LICENSE
+  COMPANY_PAN
 }
 
-enum PartnerType {
-  DSA
-  BC
-  AFFILIATE
-  API_PARTNER
-}
-
-enum ProfileType {
-  INDIVIDUAL
-  FIRM
-}
-
-enum UserRole {
-  CUSTOMER
-  DSA
-  AFFILIATE
-  ADMIN
-  SUPER_ADMIN
-  BC
-  Employees
-}
-
-enum VerificationStatus {
-  PENDING
+enum DocumentUploadStatus {
+  PENDING_UPLOAD
+  SUBMITTED
   VERIFIED
   REJECTED
+}
+
+enum AttributionType {
+  ONLINE_LINK
+  ASSISTED
+  ORGANIC
+  ADMIN_OVERRIDE
+}
+
+model LosIntegrationJob {
+  id            Int    @id @default(autoincrement())
+  applicationId Int    @unique
+  userId        Int
+  status        String @default("PENDING") // PENDING, SUCCESS, FAILED
+  retryCount    Int    @default(0)
+
+  losApplicationId String?
+  losCaseNumber    String?
+  losKycId         String?
+
+  lastError String?  @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user        User            @relation(fields: [userId], references: [id])
+  application LoanApplication @relation(fields: [applicationId], references: [id])
 }

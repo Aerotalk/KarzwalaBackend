@@ -24,6 +24,28 @@ const loginPartner = asyncHandler(async (req, res) => {
 });
 
 /**
+ * @desc    Request Partner Login OTP
+ * @route   POST /api/partners/login/request-otp
+ * @access  Public
+ */
+const requestPartnerLoginOtp = asyncHandler(async (req, res) => {
+    const { phone } = req.body;
+    const result = await partnerService.requestPartnerOtp(phone);
+    res.json(result);
+});
+
+/**
+ * @desc    Verify Partner Login OTP
+ * @route   POST /api/partners/login/verify-otp
+ * @access  Public
+ */
+const verifyPartnerLoginOtp = asyncHandler(async (req, res) => {
+    const { phone, otp } = req.body;
+    const result = await partnerService.verifyPartnerOtp(phone, otp);
+    res.json(result);
+});
+
+/**
  * @desc    Get Partner Profile
  * @route   GET /api/partners/profile
  * @access  Private (Partner)
@@ -95,6 +117,8 @@ const getPartnerEarnings = asyncHandler(async (req, res) => {
 module.exports = {
     registerPartner,
     loginPartner,
+    requestPartnerLoginOtp,
+    verifyPartnerLoginOtp,
     getPartnerProfile,
     generateReferralLink,
     updatePartnerProfile,

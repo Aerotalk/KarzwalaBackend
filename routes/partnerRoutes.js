@@ -9,6 +9,8 @@ router.post('/register', authenticate, superAdmin, partnerController.registerPar
 
 // Partner Login
 router.post('/login', partnerController.loginPartner);
+router.post('/login/request-otp', partnerController.requestPartnerLoginOtp);
+router.post('/login/verify-otp', partnerController.verifyPartnerLoginOtp);
 
 // Protected Partner Routes
 // Partner Profile (Get & Update)

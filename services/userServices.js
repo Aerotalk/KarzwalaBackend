@@ -6,6 +6,7 @@ const { BadRequestError, NotFoundError, UnauthorizedError } = require('../Global
 const twilioOtp = require('../utils/twilioOtp');
 const { comparePassword } = require('../utils/hash');
 const jwt = require('jsonwebtoken');
+const PanModel = require('../models/panModel'); // Added for PAN handling
 
 /**
  * =====================================
@@ -28,7 +29,7 @@ async function registerUser(userId, data) {
     throw new BadRequestError('Phone must be verified before registration.');
   }
 
-  const { name, dob, gender, email, password } = data;
+  const { name, dob, gender, email, password, panNumber } = data; // Included panNumber
 
   // 2️⃣ Validate required fields
   // Email and Password are now OPTIONAL. Only Name, DOB, Gender required.
@@ -61,6 +62,18 @@ async function registerUser(userId, data) {
   });
 
   logger.info(`✅ [USER SERVICE] Registration completed for customUserId: ${updatedUser.customUserId}`);
+
+  // Handle PAN record creation if provided
+  if (panNumber) {
+    logger.info(`📝 [USER SERVICE] Injecting PAN Registration for user ID: ${userId}`);
+    const existingPan = await PanModel.findByUserId(user.id);
+    const formattedPan = panNumber.toUpperCase().trim();
+    if (existingPan) {
+      await PanModel.updatePanRecord(user.id, { panNumber: formattedPan });
+    } else {
+      await PanModel.createPanRecord(user.id, formattedPan);
+    }
+  }
 
   // 6️⃣ Return minimal user info
   return {
