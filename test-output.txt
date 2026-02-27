@@ -1,0 +1,27 @@
+﻿
+======================================
+≡ƒÜÇ RUNNING BACKEND INTEGRATION TESTS
+======================================
+
+[1] Testing Health Check...
+Γ£à Health Check Passed: LoanInNeed Backend is up and running!
+
+[2] Registering Test User (+919999961618)...
+node : 
+At line:1 char:1
++ node test-endpoints.js 2>&1 | Out-File 
+-Encoding utf8 test-output.txt
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:St 
+   ring) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Γ¥î TEST FAILED:
+- Status: 401
+- Data: {
+  "status": "error",
+  "message": "Authentication token missing or 
+malformed."
+}
+- Endpoint: 
+http://localhost:5000/api/users/register
