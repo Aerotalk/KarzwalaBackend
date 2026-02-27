@@ -340,6 +340,7 @@ enum DocumentType {
   GST_CERTIFICATE
   TRADE_LICENSE
   COMPANY_PAN
+  ADDRESS_PROOF
 }
 
 enum DocumentUploadStatus {
