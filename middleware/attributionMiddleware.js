@@ -12,8 +12,22 @@ const TIME_TOLERANCE_MS = 300 * 1000;
  */
 const attributionMiddleware = async (req, res, next) => {
     try {
-        const { pid, ts, sig } = req.query;
-        console.log('[DEBUG] Attribution Middleware - Query Params:', { pid, ts, sig }); // DEBUG LOG
+        let pid, ts, sig;
+
+        // Try to get from query first (direct links)
+        if (req.query.pid && req.query.ts && req.query.sig) {
+            pid = req.query.pid;
+            ts = req.query.ts;
+            sig = req.query.sig;
+        }
+        // Fallback to body.attribution (used during registration flow if passed explicitly)
+        else if (req.body && req.body.attribution) {
+            pid = req.body.attribution.partnerId || req.body.attribution.pid;
+            ts = req.body.attribution.timestamp || req.body.attribution.ts;
+            sig = req.body.attribution.signature || req.body.attribution.sig;
+        }
+
+        console.log('[DEBUG] Attribution Middleware - Extracted Params:', { pid, ts, sig }); // DEBUG LOG
 
         // If no attribution params, proceed
         if (!pid || !ts || !sig) {
