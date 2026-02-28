@@ -271,11 +271,11 @@ const generateReferralLink = async (partnerId) => {
   const signature = generateHmac(payload, secretKey);
 
   // Link to production frontend
-  const FRONTEND_URL = process.env.FRONTEND_URL || 'https://loaninneed.vercel.app';
+  const FRONTEND_URL = process.env.FRONTEND_URL || 'https://karzwala-transfered-git-master-aerotalks-projects.vercel.app';
 
   return {
     // Ensuring it points to the signup page with attribution params
-    link: `${FRONTEND_URL}/signup?pid=${partner.id}&ts=${timestamp}&sig=${signature}`
+    link: `${FRONTEND_URL}/register?pid=${partner.id}&ts=${timestamp}&sig=${signature}`
   };
 };
 
