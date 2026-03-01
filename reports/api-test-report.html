@@ -1,0 +1,102 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>API Test Report</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        </style>
+    </head>
+    <body class="bg-gray-100 p-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+                <div class="bg-blue-600 p-6 text-white flex justify-between items-center">
+                    <div>
+                        <h1 class="text-2xl font-bold">Backend API Test HTML Report</h1>
+                        <p class="text-blue-100 mt-1">Target: http://localhost:5000 | Generated on 3/1/2026, 1:01:28 AM</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-4xl font-bold">100%</div>
+                        <div class="text-blue-100 text-sm uppercase tracking-wide">Success Rate</div>
+                    </div>
+                </div>
+                
+                <div class="flex border-b text-center">
+                    <div class="flex-1 p-4 border-r">
+                        <div class="text-gray-500 text-sm uppercase tracking-wide font-bold">Total Tests</div>
+                        <div class="text-2xl font-medium mt-1">4</div>
+                    </div>
+                    <div class="flex-1 p-4 border-r">
+                        <div class="text-green-500 text-sm uppercase tracking-wide font-bold">Passed</div>
+                        <div class="text-2xl font-medium mt-1">4</div>
+                    </div>
+                    <div class="flex-1 p-4">
+                        <div class="text-red-500 text-sm uppercase tracking-wide font-bold">Failed</div>
+                        <div class="text-2xl font-medium mt-1">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50 border-b text-gray-600 text-sm uppercase tracking-wide">
+                            <th class="p-3">Test Name</th>
+                            <th class="p-3">Endpoint</th>
+                            <th class="p-3">Status</th>
+                            <th class="p-3">Code</th>
+                            <th class="p-3">Time</th>
+                            <th class="p-3">Error (if any)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr class="bg-green-50 border-b">
+                <td class="p-3 font-medium">Health Check</td>
+                <td class="p-3"><span class="px-2 py-1 bg-gray-200 text-xs font-bold rounded">GET</span> /</td>
+                <td class="p-3"><span class="px-2 py-1 text-white text-xs font-bold rounded bg-green-500">PASSED</span></td>
+                <td class="p-3 text-gray-600">200</td>
+                <td class="p-3 text-gray-600">335ms</td>
+                <td class="p-3 text-sm text-red-600"></td>
+            </tr>
+        
+            <tr class="bg-green-50 border-b">
+                <td class="p-3 font-medium">Request Auth OTP</td>
+                <td class="p-3"><span class="px-2 py-1 bg-gray-200 text-xs font-bold rounded">POST</span> /api/auth/phone/request-otp</td>
+                <td class="p-3"><span class="px-2 py-1 text-white text-xs font-bold rounded bg-green-500">PASSED</span></td>
+                <td class="p-3 text-gray-600">200</td>
+                <td class="p-3 text-gray-600">400ms</td>
+                <td class="p-3 text-sm text-red-600"></td>
+            </tr>
+        
+            <tr class="bg-green-50 border-b">
+                <td class="p-3 font-medium">Aadhaar Request OTP (Bypass)</td>
+                <td class="p-3"><span class="px-2 py-1 bg-gray-200 text-xs font-bold rounded">POST</span> /api/auth/aadhaar/request-otp</td>
+                <td class="p-3"><span class="px-2 py-1 text-white text-xs font-bold rounded bg-green-500">PASSED</span></td>
+                <td class="p-3 text-gray-600">200</td>
+                <td class="p-3 text-gray-600">20ms</td>
+                <td class="p-3 text-sm text-red-600"></td>
+            </tr>
+        
+            <tr class="bg-green-50 border-b">
+                <td class="p-3 font-medium">Fetch Partner Link (Missing Auth)</td>
+                <td class="p-3"><span class="px-2 py-1 bg-gray-200 text-xs font-bold rounded">GET</span> /api/partners/link</td>
+                <td class="p-3"><span class="px-2 py-1 text-white text-xs font-bold rounded bg-green-500">PASSED</span></td>
+                <td class="p-3 text-gray-600">401</td>
+                <td class="p-3 text-gray-600">20ms</td>
+                <td class="p-3 text-sm text-red-600"></td>
+            </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center text-gray-400 mt-6 text-sm">
+                LoanInNeed Automated API Testing
+            </div>
+        </div>
+    </body>
+    </html>
+    

@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="LoanInNeed Backend Tests" tests="72" failures="30" errors="0" time="203.737">
+  <testsuite name="__tests__\unit\utils\jwt.spec.js" errors="0" failures="0" skipped="0" timestamp="2026-02-28T10:23:19" time="13.089" tests="5">
+    <testcase classname="🎫 JWT Utility Tests › generateToken" name="✅ should generate a valid JWT token" time="0.01">
+    </testcase>
+    <testcase classname="🎫 JWT Utility Tests › generateToken" name="✅ should include expiration in token" time="0.002">
+    </testcase>
+    <testcase classname="🎫 JWT Utility Tests › verifyToken" name="✅ should verify a valid token" time="0.003">
+    </testcase>
+    <testcase classname="🎫 JWT Utility Tests › verifyToken" name="❌ should reject invalid token" time="0.005">
+    </testcase>
+    <testcase classname="🎫 JWT Utility Tests › verifyToken" name="❌ should reject expired token" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\unit\services\locationService.spec.js" errors="0" failures="0" skipped="0" timestamp="2026-02-28T10:23:32" time="10.286" tests="5">
+    <testcase classname="📍 LocationService Unit Tests › saveLocation" name="✅ should save location successfully" time="0.003">
+    </testcase>
+    <testcase classname="📍 LocationService Unit Tests › saveLocation" name="❌ should reject location without latitude" time="0.003">
+    </testcase>
+    <testcase classname="📍 LocationService Unit Tests › saveLocation" name="❌ should reject location without longitude" time="0.001">
+    </testcase>
+    <testcase classname="📍 LocationService Unit Tests › getLatestLocation" name="✅ should return latest location" time="0.001">
+    </testcase>
+    <testcase classname="📍 LocationService Unit Tests › getLatestLocation" name="✅ should return null if no location exists" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\unit\services\authService.spec.js" errors="0" failures="4" skipped="0" timestamp="2026-02-28T10:23:42" time="14.812" tests="4">
+    <testcase classname="🔐 AuthService Unit Tests › requestPhoneOtp" name="✅ should request OTP successfully" time="3.06">
+      <failure>Error: expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+Expected: &quot;+915295878515&quot;
+
+Number of calls: 0
+    at Object.toHaveBeenCalledWith (D:\Project\Karzwala2.0\Backend\__tests__\unit\services\authService.spec.js:24:34)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="🔐 AuthService Unit Tests › requestPhoneOtp" name="❌ should handle OTP service errors" time="0.513">
+      <failure>Error: expect(received).rejects.toThrow()
+
+Received promise resolved instead of rejected
+Resolved to value: {&quot;message&quot;: &quot;OTP sent successfully.&quot;}
+    at expect (D:\Project\Karzwala2.0\Backend\node_modules\expect\build\index.js:113:15)
+    at Object.expect (D:\Project\Karzwala2.0\Backend\__tests__\unit\services\authService.spec.js:32:13)
+    at Promise.then.completed (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:121:9)
+    at run (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:444:34)</failure>
+    </testcase>
+    <testcase classname="🔐 AuthService Unit Tests › verifyPhoneOtp" name="✅ should verify OTP and return token" time="0.579">
+      <failure>Error: Invalid or expired OTP.
+    at Object.verifyPhoneOtp (D:\Project\Karzwala2.0\Backend\services\authService.js:58:11)
+    at Object.&lt;anonymous&gt; (D:\Project\Karzwala2.0\Backend\__tests__\unit\services\authService.spec.js:46:22)</failure>
+    </testcase>
+    <testcase classname="🔐 AuthService Unit Tests › verifyPhoneOtp" name="❌ should reject invalid OTP" time="0.296">
+      <failure>Error: expect(received).rejects.toThrow(expected)
+
+Expected constructor: UnauthorizedError
+Received constructor: BadRequestError
+
+Received message: &quot;Invalid or expired OTP.&quot;
+
+      56 |   if (!verificationCheck || verificationCheck.status !== &apos;approved&apos;) {
+      57 |     logger.warn(&apos;Phone OTP verification failed for: %s&apos;, targetPhone);
+    &gt; 58 |     throw new BadRequestError(&apos;Invalid or expired OTP.&apos;);
+         |           ^
+      59 |   }
+      60 |
+      61 |   // Check if user already exists
+
+      at Object.verifyPhoneOtp (services/authService.js:58:11)
+      at Object.&lt;anonymous&gt; (__tests__/unit/services/authService.spec.js:59:7)
+    at Object.toThrow (D:\Project\Karzwala2.0\Backend\node_modules\expect\build\index.js:218:22)
+    at Object.toThrow (D:\Project\Karzwala2.0\Backend\__tests__\unit\services\authService.spec.js:59:69)
+    at Promise.then.completed (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:316:40)
+    at _runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:121:9)
+    at run (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:444:34)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\unit\services\kycService.spec.js" errors="0" failures="1" skipped="0" timestamp="2026-02-28T10:23:57" time="18.488" tests="3">
+    <testcase classname="📋 KYCService Unit Tests › saveFullKYC" name="✅ should save full KYC data successfully" time="6.962">
+      <failure>Error: expect(jest.fn()).toHaveBeenCalled()
+
+Expected number of calls: &gt;= 1
+Received number of calls:    0
+    at Object.toHaveBeenCalled (D:\Project\Karzwala2.0\Backend\__tests__\unit\services\kycService.spec.js:36:58)</failure>
+    </testcase>
+    <testcase classname="📋 KYCService Unit Tests › saveFullKYC" name="❌ should handle missing required fields" time="0.553">
+    </testcase>
+    <testcase classname="📋 KYCService Unit Tests › saveFullKYC" name="❌ should validate data types" time="0.562">
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\unit\middleware\authMiddleware.spec.js" errors="0" failures="4" skipped="0" timestamp="2026-02-28T10:24:16" time="9.459" tests="4">
+    <testcase classname="🔐 AuthMiddleware Unit Tests" name="✅ should authenticate valid token" time="0.004">
+      <failure>Error: expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+Expected: &quot;valid-token&quot;
+
+Number of calls: 0
+    at Object.toHaveBeenCalledWith (D:\Project\Karzwala2.0\Backend\__tests__\unit\middleware\authMiddleware.spec.js:25:25)</failure>
+    </testcase>
+    <testcase classname="🔐 AuthMiddleware Unit Tests" name="❌ should reject request without token" time="0.001">
+      <failure>Error: expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+Expected: 401
+
+Number of calls: 0
+    at Object.toHaveBeenCalledWith (D:\Project\Karzwala2.0\Backend\__tests__\unit\middleware\authMiddleware.spec.js:34:24)</failure>
+    </testcase>
+    <testcase classname="🔐 AuthMiddleware Unit Tests" name="❌ should reject request with invalid token format" time="0.001">
+      <failure>Error: expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+Expected: 401
+
+Number of calls: 0
+    at Object.toHaveBeenCalledWith (D:\Project\Karzwala2.0\Backend\__tests__\unit\middleware\authMiddleware.spec.js:43:24)</failure>
+    </testcase>
+    <testcase classname="🔐 AuthMiddleware Unit Tests" name="❌ should reject request with invalid token" time="0.001">
+      <failure>Error: expect(jest.fn()).toHaveBeenCalledWith(...expected)
+
+Expected: 401
+
+Number of calls: 0
+    at Object.toHaveBeenCalledWith (D:\Project\Karzwala2.0\Backend\__tests__\unit\middleware\authMiddleware.spec.js:55:24)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\security\security.spec.js" errors="0" failures="1" skipped="0" timestamp="2026-02-28T10:24:25" time="17.757" tests="9">
+    <testcase classname="🔒 Security Tests › Authentication Security" name="✅ should reject requests without authentication token" time="0.032">
+    </testcase>
+    <testcase classname="🔒 Security Tests › Authentication Security" name="✅ should reject requests with invalid token" time="0.018">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 401
+Received: 500
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\security\security.spec.js:21:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="🔒 Security Tests › Authentication Security" name="✅ should reject requests with malformed token" time="0.014">
+    </testcase>
+    <testcase classname="🔒 Security Tests › Input Validation Security" name="✅ should sanitize SQL injection attempts" time="0.03">
+    </testcase>
+    <testcase classname="🔒 Security Tests › Input Validation Security" name="✅ should validate phone number format" time="0.034">
+    </testcase>
+    <testcase classname="🔒 Security Tests › Input Validation Security" name="✅ should validate email format" time="3.48">
+    </testcase>
+    <testcase classname="🔒 Security Tests › Rate Limiting" name="✅ should handle multiple rapid requests" time="3.359">
+    </testcase>
+    <testcase classname="🔒 Security Tests › CORS Security" name="✅ should include CORS headers" time="0.003">
+    </testcase>
+    <testcase classname="🔒 Security Tests › Helmet Security Headers" name="✅ should include security headers" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\unit\kycService.spec.js" errors="0" failures="4" skipped="0" timestamp="2026-02-28T10:24:43" time="9.904" tests="6">
+    <testcase classname="KycService.saveFullKYC (unit)" name="throws when userId is not provided" time="0.005">
+    </testcase>
+    <testcase classname="KycService.saveFullKYC (unit)" name="validates employment payload presence" time="0">
+      <failure>ReferenceError: baseValidPayload is not defined
+    at Object.&lt;anonymous&gt; (D:\Project\Karzwala2.0\Backend\__tests__\unit\kycService.spec.js:90:21)
+    at Promise.then.completed (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:316:40)
+    at _runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:121:9)
+    at run (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:444:34)</failure>
+    </testcase>
+    <testcase classname="KycService.saveFullKYC (unit)" name="validates monthlyIncome numeric and non-negative" time="0.001">
+      <failure>ReferenceError: baseValidPayload is not defined
+    at Object.&lt;anonymous&gt; (D:\Project\Karzwala2.0\Backend\__tests__\unit\kycService.spec.js:96:21)
+    at Promise.then.completed (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:316:40)
+    at _runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:121:9)
+    at run (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:444:34)</failure>
+    </testcase>
+    <testcase classname="KycService.saveFullKYC (unit)" name="validates address payload presence" time="0">
+      <failure>ReferenceError: baseValidPayload is not defined
+    at Object.&lt;anonymous&gt; (D:\Project\Karzwala2.0\Backend\__tests__\unit\kycService.spec.js:104:21)
+    at Promise.then.completed (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:316:40)
+    at _runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:121:9)
+    at run (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:444:34)</failure>
+    </testcase>
+    <testcase classname="KycService.saveFullKYC (unit)" name="validates loan payload presence and amount" time="0">
+      <failure>ReferenceError: baseValidPayload is not defined
+    at Object.&lt;anonymous&gt; (D:\Project\Karzwala2.0\Backend\__tests__\unit\kycService.spec.js:110:21)
+    at Promise.then.completed (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:316:40)
+    at _runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:121:9)
+    at run (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:444:34)</failure>
+    </testcase>
+    <testcase classname="KycService.saveFullKYC (unit)" name="saves employment, address and loan and returns aggregated result for multiple payloads" time="0.008">
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\unit\jwt.spec.js" errors="0" failures="1" skipped="0" timestamp="2026-02-28T10:24:53" time="9.577" tests="4">
+    <testcase classname="🛡️ JWT Utility" name="✅ should generate a valid JWT token" time="0.003">
+    </testcase>
+    <testcase classname="🛡️ JWT Utility" name="✅ should verify a valid JWT token" time="0.002">
+    </testcase>
+    <testcase classname="🛡️ JWT Utility" name="❌ should fail verification for invalid token" time="0.007">
+    </testcase>
+    <testcase classname="🛡️ JWT Utility" name="❌ should fail verification for expired token" time="0.02">
+      <failure>Error: expect(received).toThrow(expected)
+
+Expected pattern: /jwt expired/
+
+Received function did not throw
+    at Object.toThrow (D:\Project\Karzwala2.0\Backend\__tests__\unit\jwt.spec.js:31:43)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\unit\hash.spec.js" errors="0" failures="0" skipped="0" timestamp="2026-02-28T10:25:03" time="10.049" tests="4">
+    <testcase classname="🔒 Hash Utility" name="✅ should hash a password successfully" time="0.069">
+    </testcase>
+    <testcase classname="🔒 Hash Utility" name="✅ should compare correct password successfully" time="0.057">
+    </testcase>
+    <testcase classname="🔒 Hash Utility" name="❌ should fail comparison with incorrect password" time="0.055">
+    </testcase>
+    <testcase classname="🔒 Hash Utility" name="❌ should throw error if password is missing" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\performance\performance.spec.js" errors="0" failures="2" skipped="0" timestamp="2026-02-28T10:25:13" time="17.264" tests="4">
+    <testcase classname="⚡ Performance Tests › Response Time Tests" name="✅ health check should respond quickly" time="0.018">
+    </testcase>
+    <testcase classname="⚡ Performance Tests › Response Time Tests" name="✅ OTP request should respond within acceptable time" time="2.8">
+      <failure>Error: expect(received).toBeLessThan(expected)
+
+Expected: &lt; 2000
+Received:   2799
+    at Object.toBeLessThan (D:\Project\Karzwala2.0\Backend\__tests__\performance\performance.spec.js:25:24)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="⚡ Performance Tests › Concurrent Request Handling" name="✅ should handle concurrent OTP requests" time="3.258">
+    </testcase>
+    <testcase classname="⚡ Performance Tests › Database Query Performance" name="✅ user profile fetch should be fast" time="1.159">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 500
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\performance\performance.spec.js:72:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\integration\user.basic.spec.js" errors="0" failures="3" skipped="0" timestamp="2026-02-28T10:25:30" time="16.207" tests="3">
+    <testcase classname="👤 User registration and profile (integration)" name="requests OTP and verifies (creates a placeholder user)" time="3.747">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 400
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\integration\user.basic.spec.js:35:29)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="👤 User registration and profile (integration)" name="registers the user (step after OTP) and returns profile summary" time="0.005">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 404
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\integration\user.basic.spec.js:62:28)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="👤 User registration and profile (integration)" name="fetches /api/user/me with the token and returns full user record" time="0.005">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 404
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\integration\user.basic.spec.js:74:28)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\integration\selfie.integration.spec.js" errors="0" failures="3" skipped="0" timestamp="2026-02-28T10:25:46" time="13.501" tests="5">
+    <testcase classname="📸 Selfie Upload Integration Tests › POST /api/selfie/upload" name="✅ should upload selfie successfully" time="0.018">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 500
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\integration\selfie.integration.spec.js:56:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="📸 Selfie Upload Integration Tests › POST /api/selfie/upload" name="❌ should reject upload without file" time="0.012">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 400
+Received: 500
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\integration\selfie.integration.spec.js:68:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="📸 Selfie Upload Integration Tests › POST /api/selfie/upload" name="❌ should require authentication" time="0.013">
+    </testcase>
+    <testcase classname="📸 Selfie Upload Integration Tests › GET /api/selfie/status" name="✅ should get selfie status" time="0.007">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 500
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\integration\selfie.integration.spec.js:88:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="📸 Selfie Upload Integration Tests › GET /api/selfie/status" name="❌ should require authentication" time="0.006">
+    </testcase>
+    <testcase classname="" name="Test execution failure: could be caused by test hooks like &apos;afterAll&apos;." time="0">
+      <failure>{&quot;message&quot;:&quot;&quot;,&quot;stack&quot;:&quot;TypeError: Cannot read properties of undefined (reading &apos;id&apos;)\n    at Object.id (D:\\Project\\Karzwala2.0\\Backend\\__tests__\\integration\\selfie.integration.spec.js:42:44)\n    at Promise.then.completed (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\utils.js:298:28)\n    at new Promise (&lt;anonymous&gt;)\n    at callAsyncCircusFn (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\utils.js:231:10)\n    at _callCircusHook (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:281:40)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at _runTestsForDescribeBlock (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:154:7)\n    at _runTestsForDescribeBlock (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:121:9)\n    at run (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:71:3)\n    at runAndTransformResultsToJestFormat (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\legacy-code-todo-rewrite\\jestAdapterInit.js:122:21)\n    at jestAdapter (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\legacy-code-todo-rewrite\\jestAdapter.js:79:19)\n    at runTestInternal (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-runner\\build\\runTest.js:367:16)\n    at runTest (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-runner\\build\\runTest.js:444:34)&quot;}</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\integration\location.integration.spec.js" errors="0" failures="3" skipped="0" timestamp="2026-02-28T10:26:00" time="14.479" tests="7">
+    <testcase classname="📍 Location Integration Tests › POST /api/users/location" name="✅ should save location successfully" time="0.016">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 500
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\integration\location.integration.spec.js:55:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="📍 Location Integration Tests › POST /api/users/location" name="❌ should reject location without latitude" time="0.044">
+    </testcase>
+    <testcase classname="📍 Location Integration Tests › POST /api/users/location" name="❌ should reject location without longitude" time="0.011">
+    </testcase>
+    <testcase classname="📍 Location Integration Tests › POST /api/users/location" name="❌ should require authentication" time="0.01">
+    </testcase>
+    <testcase classname="📍 Location Integration Tests › GET /api/users/location" name="✅ should get latest location" time="0.027">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 500
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\integration\location.integration.spec.js:111:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="📍 Location Integration Tests › GET /api/users/location" name="❌ should return 404 if no location found" time="0.788">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 404
+Received: 500
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\integration\location.integration.spec.js:134:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="📍 Location Integration Tests › GET /api/users/location" name="❌ should require authentication" time="0.008">
+    </testcase>
+    <testcase classname="" name="Test execution failure: could be caused by test hooks like &apos;afterAll&apos;." time="0">
+      <failure>{&quot;message&quot;:&quot;&quot;,&quot;stack&quot;:&quot;TypeError: Cannot read properties of undefined (reading &apos;id&apos;)\n    at Object.id (D:\\Project\\Karzwala2.0\\Backend\\__tests__\\integration\\location.integration.spec.js:42:44)\n    at Promise.then.completed (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\utils.js:298:28)\n    at new Promise (&lt;anonymous&gt;)\n    at callAsyncCircusFn (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\utils.js:231:10)\n    at _callCircusHook (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:281:40)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at _runTestsForDescribeBlock (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:154:7)\n    at _runTestsForDescribeBlock (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:121:9)\n    at run (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:71:3)\n    at runAndTransformResultsToJestFormat (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\legacy-code-todo-rewrite\\jestAdapterInit.js:122:21)\n    at jestAdapter (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\legacy-code-todo-rewrite\\jestAdapter.js:79:19)\n    at runTestInternal (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-runner\\build\\runTest.js:367:16)\n    at runTest (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-runner\\build\\runTest.js:444:34)&quot;}</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\integration\kyc.integration.spec.js" errors="0" failures="1" skipped="0" timestamp="2026-02-28T10:26:14" time="13.9" tests="4">
+    <testcase classname="📋 KYC Integration Tests › POST /api/kyc" name="✅ should submit KYC data successfully" time="0.032">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 500
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\integration\kyc.integration.spec.js:56:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="📋 KYC Integration Tests › POST /api/kyc" name="❌ should reject KYC with missing required fields" time="0.013">
+    </testcase>
+    <testcase classname="📋 KYC Integration Tests › POST /api/kyc" name="❌ should reject KYC with invalid data types" time="0.022">
+    </testcase>
+    <testcase classname="📋 KYC Integration Tests › POST /api/kyc" name="❌ should require authentication" time="0.014">
+    </testcase>
+    <testcase classname="" name="Test execution failure: could be caused by test hooks like &apos;afterAll&apos;." time="0">
+      <failure>{&quot;message&quot;:&quot;&quot;,&quot;stack&quot;:&quot;TypeError: Cannot read properties of undefined (reading &apos;id&apos;)\n    at Object.id (D:\\Project\\Karzwala2.0\\Backend\\__tests__\\integration\\kyc.integration.spec.js:43:44)\n    at Promise.then.completed (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\utils.js:298:28)\n    at new Promise (&lt;anonymous&gt;)\n    at callAsyncCircusFn (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\utils.js:231:10)\n    at _callCircusHook (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:281:40)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at _runTestsForDescribeBlock (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:154:7)\n    at _runTestsForDescribeBlock (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:121:9)\n    at run (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:71:3)\n    at runAndTransformResultsToJestFormat (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\legacy-code-todo-rewrite\\jestAdapterInit.js:122:21)\n    at jestAdapter (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\legacy-code-todo-rewrite\\jestAdapter.js:79:19)\n    at runTestInternal (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-runner\\build\\runTest.js:367:16)\n    at runTest (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-runner\\build\\runTest.js:444:34)&quot;}</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="__tests__\integration\document.integration.spec.js" errors="0" failures="3" skipped="0" timestamp="2026-02-28T10:26:28" time="14.134" tests="5">
+    <testcase classname="📄 Document Upload Integration Tests › POST /api/document/submit" name="✅ should upload documents successfully" time="0.015">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 500
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\integration\document.integration.spec.js:65:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="📄 Document Upload Integration Tests › POST /api/document/submit" name="❌ should reject upload without required documents" time="0.002">
+      <failure>Error: .send() can&apos;t be used if .attach() or .field() is used. Please use only .send() or only .field() &amp; .attach()
+    at Test.Object.&lt;anonymous&gt;.RequestBase.send (D:\Project\Karzwala2.0\Backend\node_modules\superagent\src\request-base.js:623:11)
+    at Object.send (D:\Project\Karzwala2.0\Backend\__tests__\integration\document.integration.spec.js:78:10)
+    at Promise.then.completed (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\utils.js:231:10)
+    at _callCircusTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at _runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:252:3)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:126:9)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:121:9)
+    at _runTestsForDescribeBlock (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:121:9)
+    at run (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\run.js:71:3)
+    at runAndTransformResultsToJestFormat (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:122:21)
+    at jestAdapter (D:\Project\Karzwala2.0\Backend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:79:19)
+    at runTestInternal (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:367:16)
+    at runTest (D:\Project\Karzwala2.0\Backend\node_modules\jest-runner\build\runTest.js:444:34)</failure>
+    </testcase>
+    <testcase classname="📄 Document Upload Integration Tests › POST /api/document/submit" name="❌ should require authentication" time="0.015">
+    </testcase>
+    <testcase classname="📄 Document Upload Integration Tests › GET /api/document/status" name="✅ should get document status" time="0.006">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 500
+    at Object.toBe (D:\Project\Karzwala2.0\Backend\__tests__\integration\document.integration.spec.js:98:26)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)</failure>
+    </testcase>
+    <testcase classname="📄 Document Upload Integration Tests › GET /api/document/status" name="❌ should require authentication" time="0.007">
+    </testcase>
+    <testcase classname="" name="Test execution failure: could be caused by test hooks like &apos;afterAll&apos;." time="0">
+      <failure>{&quot;message&quot;:&quot;&quot;,&quot;stack&quot;:&quot;TypeError: Cannot read properties of undefined (reading &apos;id&apos;)\n    at Object.id (D:\\Project\\Karzwala2.0\\Backend\\__tests__\\integration\\document.integration.spec.js:44:44)\n    at Promise.then.completed (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\utils.js:298:28)\n    at new Promise (&lt;anonymous&gt;)\n    at callAsyncCircusFn (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\utils.js:231:10)\n    at _callCircusHook (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:281:40)\n    at processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at _runTestsForDescribeBlock (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:154:7)\n    at _runTestsForDescribeBlock (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:121:9)\n    at run (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\run.js:71:3)\n    at runAndTransformResultsToJestFormat (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\legacy-code-todo-rewrite\\jestAdapterInit.js:122:21)\n    at jestAdapter (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-circus\\build\\legacy-code-todo-rewrite\\jestAdapter.js:79:19)\n    at runTestInternal (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-runner\\build\\runTest.js:367:16)\n    at runTest (D:\\Project\\Karzwala2.0\\Backend\\node_modules\\jest-runner\\build\\runTest.js:444:34)&quot;}</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

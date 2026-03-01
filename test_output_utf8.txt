@@ -1,0 +1,612 @@
+﻿
+> backend@1.0.0 test
+> jest --runInBand
+
+node.exe : [baseline-browser-mapping] The 
+data in this module is over two months old. 
+ To ensure accurate Baseline data, please 
+update: `npm i 
+baseline-browser-mapping@latest -D`
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" 
+"C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: 
+    ([baseline-brows...ping@latest -D`:Str  
+  ing) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommand 
+   Error
+ 
+FAIL __tests__/unit/utils/jwt.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL __tests__/unit/services/selfieService.s
+pec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL 
+__tests__/unit/services/kycService.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL __tests__/unit/services/locationService
+.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL 
+__tests__/unit/services/authService.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL __tests__/unit/middleware/authMiddlewar
+e.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL __tests__/unit/kycService.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL __tests__/unit/jwt.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL 
+__tests__/integration/user.basic.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL __tests__/unit/hash.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL __tests__/integration/selfie.integratio
+n.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL __tests__/integration/location.integrat
+ion.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL __tests__/security/security.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL 
+__tests__/performance/performance.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL __tests__/integration/kyc.integration.s
+pec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL __tests__/integration/document.integrat
+ion.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+FAIL 
+__tests__/integration/auth.phone.spec.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../utils/logger' 
+from '__tests__/test-helpers/setup.js'
+
+    [0m [90m  5 |[39m
+     [90m  6 |[39m [90m// Suppress 
+logger output during tests (optional - 
+comment out for debugging)[39m
+    [31m[1m>[22m[39m[90m  7 |[39m jest
+[33m.[39mmock([32m'../utils/logger'[39m
+[33m,[39m () [33m=>[39m ({
+     [90m    |[39m      
+[31m[1m^[22m[39m
+     [90m  8 |[39m   info[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m  9 |[39m   error[33m:[39m 
+jest[33m.[39mfn()[33m,[39m
+     [90m 10 |[39m   warn[33m:[39m 
+jest[33m.[39mfn()[33m,[39m[0m
+
+      at Resolver._throwModNotFoundError (no
+de_modules/jest-resolve/build/resolver.js:42
+7:11)
+      at Object.mock 
+(__tests__/test-helpers/setup.js:7:6)
+
+≡ƒôª report is created on: D:\Project\Karzwala2.0\Backend\reports\test-report.html
+------------------------------------|---------|----------|---------|---------|-------------------
+File                                | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------------------------|---------|----------|---------|---------|-------------------
+All files                           |       0 |        0 |       0 |       0 |                   
+ controllers                        |       0 |        0 |       0 |       0 |                   
+  analyticsController.js            |       0 |        0 |       0 |       0 |                   
+  authController.js                 |       0 |        0 |       0 |       0 | 2-37              
+  blogController.js                 |       0 |        0 |       0 |       0 |                   
+  cibilController.js                |       0 |        0 |       0 |       0 |                   
+  documentVerificationController.js |       0 |        0 |       0 |       0 | 1-49              
+  kycController.js                  |       0 |        0 |       0 |       0 | 1-230             
+  loanController.js                 |       0 |        0 |       0 |       0 | 1-92              
+  pageController.js                 |       0 |        0 |       0 |       0 |                   
+  partnerController.js              |       0 |        0 |       0 |       0 | 1-117             
+  selfieController.js               |       0 |        0 |       0 |       0 | 1-34              
+  userController.js                 |       0 |        0 |       0 |       0 | 2-125             
+ middleware                         |       0 |        0 |       0 |       0 |                   
+  attributionMiddleware.js          |       0 |        0 |       0 |       0 | 1-131             
+  authMiddleware.js                 |       0 |        0 |       0 |       0 | 1-57              
+  partnerAuthMiddleware.js          |       0 |        0 |       0 |       0 | 1-55              
+  requestLogger.js                  |       0 |        0 |       0 |       0 |                   
+  uploadMiddleware.js               |       0 |        0 |       0 |       0 | 1-45              
+ models                             |       0 |        0 |       0 |       0 |                   
+  UserDocumentUploadModel.js        |       0 |        0 |       0 |       0 | 1-48              
+  aadhaarModel.js                   |       0 |        0 |       0 |       0 | 1-75              
+  adressModel.js                    |       0 |        0 |       0 |       0 | 1-22              
+  analyticsModel.js                 |       0 |        0 |       0 |       0 |                   
+  blogModel.js                      |       0 |        0 |       0 |       0 |                   
+  cibilModel.js                     |       0 |        0 |       0 |       0 |                   
+  documentModel.js                  |       0 |        0 |       0 |       0 | 1-53              
+  employmentModel.js                |       0 |        0 |       0 |       0 | 1-34              
+  loanApplicationModel.js           |       0 |        0 |       0 |       0 | 1-32              
+  loanModel.js                      |       0 |        0 |       0 |       0 | 1-123             
+  otpModel.js                       |       0 |        0 |       0 |       0 | 1-43              
+  pageModel.js                      |       0 |        0 |       0 |       0 |                   
+  panModel.js                       |       0 |        0 |       0 |       0 | 1-75              
+  userLocationModel.js              |       0 |        0 |       0 |       0 | 1-26              
+  userModel.js                      |       0 |        0 |       0 |       0 | 1-40              
+ services                           |       0 |        0 |       0 |       0 |                   
+  UserDocumentStatusService.js      |       0 |        0 |       0 |       0 | 1-29              
+  aadharService.js                  |       0 |        0 |       0 |       0 | 1-95              
+  analyticsService.js               |       0 |        0 |       0 |       0 |                   
+  authService.js                    |       0 |        0 |       0 |       0 | 1-128             
+  consentService.js                 |       0 |        0 |       0 |       0 |                   
+  documentService.js                |       0 |        0 |       0 |       0 | 1-151             
+  emailService.js                   |       0 |        0 |       0 |       0 |                   
+  kycService.js                     |       0 |        0 |       0 |       0 | 2-134             
+  loanService.js                    |       0 |        0 |       0 |       0 |                   
+  locationService.js                |       0 |        0 |       0 |       0 | 1-41              
+  otpService.js                     |       0 |        0 |       0 |       0 | 1-68              
+  panService.js                     |       0 |        0 |       0 |       0 | 1-93              
+  partnerService.js                 |       0 |        0 |       0 |       0 | 1-473             
+  selfieService.js                  |       0 |        0 |       0 |       0 | 1-25              
+  userServices.js                   |       0 |        0 |       0 |       0 | 2-289             
+  validationService.js              |       0 |        0 |       0 |       0 |                   
+ utils                              |       0 |        0 |       0 |       0 |                   
+  aadhaarOtp.js                     |       0 |        0 |       0 |       0 | 9-36              
+  crypto.js                         |       0 |        0 |       0 |       0 |                   
+  cryptoUtils.js                    |       0 |        0 |       0 |       0 | 1-84              
+  hash.js                           |       0 |      100 |       0 |       0 | 2-13              
+  jwt.js                            |       0 |        0 |       0 |       0 | 1-39              
+  logger.js                         |       0 |        0 |       0 |       0 | 12-168            
+  prismaClient.js                   |       0 |      100 |     100 |       0 | 1-3               
+  smsOtpService.js                  |       0 |        0 |       0 |       0 | 1-175             
+  twilioOtp.js                      |       0 |        0 |       0 |       0 | 1-93              
+  validator.js                      |       0 |        0 |       0 |       0 |                   
+------------------------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 0% ( 0/1244 )
+Branches     : 0% ( 0/691 )
+Functions    : 0% ( 0/186 )
+Lines        : 0% ( 0/1204 )
+================================================================================
+Jest: "global" coverage threshold for 
+statements (70%) not met: 0%
+Jest: "global" coverage threshold for 
+branches (70%) not met: 0%
+Jest: "global" coverage threshold for lines 
+(70%) not met: 0%
+Jest: "global" coverage threshold for 
+functions (70%) not met: 0%
+Jest: "./controllers/" coverage threshold 
+for statements (80%) not met: 0%
+Jest: "./controllers/" coverage threshold 
+for branches (80%) not met: 0%
+Jest: "./controllers/" coverage threshold 
+for lines (80%) not met: 0%
+Jest: "./controllers/" coverage threshold 
+for functions (80%) not met: 0%
+Jest: "./services/" coverage threshold for 
+statements (75%) not met: 0%
+Jest: "./services/" coverage threshold for 
+branches (75%) not met: 0%
+Jest: "./services/" coverage threshold for 
+lines (75%) not met: 0%
+Jest: "./services/" coverage threshold for 
+functions (75%) not met: 0%
+Test Suites: 17 failed, 17 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        2.063 s
+Ran all test suites.

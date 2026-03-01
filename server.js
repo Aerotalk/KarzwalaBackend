@@ -29,6 +29,7 @@ const allowedOrigins = [
   'http://localhost:3000', // Local Frontend (Next.js default)
   'http://localhost:5173', // Local Frontend (Vite default)
   'https://loaninneed.vercel.app', // Production Frontend
+  'https://karzwala-transfered.vercel.app', // New Production Frontend
 ];
 
 app.use(cors({
